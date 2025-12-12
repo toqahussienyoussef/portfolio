@@ -2,19 +2,26 @@
 export default defineNuxtConfig({
   app: {
     baseURL: "/portfolio/",
-    cdnURL: "/portfolio/", // Add this line - crucial for GitHub Pages
+    buildAssetsDir: "/_nuxt/",
   },
+
   ssr: false,
+
   nitro: {
+    preset: "static",
     prerender: {
-      routes: ["/"],
       crawlLinks: true,
+      routes: ["/"],
     },
   },
+
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+
   css: ["~/assets/css/main.scss"],
+
   modules: ["@nuxtjs/tailwindcss", "nuxt-toast"],
+
   postcss: {
     plugins: {
       tailwindcss: {},
