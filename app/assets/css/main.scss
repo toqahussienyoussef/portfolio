@@ -1,0 +1,552 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #10b981, #14b8a6);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #059669, #0d9488);
+}
+
+
+@layer components {
+
+    /* Hero & Header */
+    .hero {
+        @apply min-h-screen bg-gradient-to-br from-stone-50 via-amber-50 to-emerald-50;
+    }
+
+    .header {
+        @apply relative overflow-hidden bg-gradient-to-r from-emerald-800 via-teal-700 to-amber-700 text-white;
+    }
+
+    .header-pattern {
+        @apply absolute inset-0 opacity-10;
+    }
+
+    .header-pattern-inner {
+        @apply absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00eiIvPjwvZz48L2c+PC9zdmc+')];
+    }
+
+    .header-content-wrapper {
+        @apply max-w-7xl mx-auto px-6 py-20 relative z-10;
+    }
+
+    .header-flex {
+        @apply flex flex-col lg:flex-row items-center gap-12;
+    }
+
+    .profile-image-container {
+        @apply flex-shrink-0;
+    }
+
+    .profile-image-group {
+        @apply relative;
+    }
+
+    .profile-glow {
+        @apply absolute -inset-1 bg-gradient-to-r from-amber-400 via-emerald-400 to-teal-400 rounded-full blur opacity-75 transition duration-1000;
+    }
+
+    .profile-image-frame {
+        @apply relative w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl;
+    }
+
+    .profile-image {
+        @apply w-full h-full object-cover;
+    }
+
+    .header-text {
+        @apply flex-1 text-center lg:text-left;
+    }
+
+    .hero-title {
+        @apply text-5xl lg:text-6xl font-bold mb-4 animate-fade-in;
+    }
+
+    .hero-subtitle {
+        @apply text-2xl lg:text-3xl text-amber-100 mb-6 font-light;
+    }
+
+    .hero-description {
+        @apply text-lg text-emerald-50 mb-8 max-w-3xl leading-relaxed;
+    }
+
+    .contact-links {
+        @apply flex flex-wrap gap-4 justify-center lg:justify-start;
+    }
+
+    .contact-link {
+        @apply flex items-center gap-2 bg-white text-emerald-800 px-5 py-3 rounded-lg hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    }
+
+    .cv-button {
+        @apply flex items-center gap-2 bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-semibold;
+    }
+
+    .location {
+        @apply flex items-center gap-2 justify-center lg:justify-start mt-6 text-emerald-100;
+    }
+
+    /* Sections */
+    .section-container {
+        @apply max-w-7xl mx-auto px-6;
+    }
+
+    .section-title {
+        @apply text-4xl lg:text-5xl font-bold text-center mb-16 text-gray-800 mb-12;
+    }
+
+    .about-section {
+        @apply py-20 bg-white;
+    }
+
+    .stats-grid {
+        @apply grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16;
+    }
+
+    .stat-card {
+        @apply p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all;
+    }
+
+    .stat-card.emerald {
+        @apply bg-gradient-to-br from-emerald-50 to-teal-50;
+    }
+
+    .stat-card.amber {
+        @apply bg-gradient-to-br from-amber-50 to-orange-50;
+    }
+
+    .stat-card.teal {
+        @apply bg-gradient-to-br from-teal-50 to-cyan-50;
+    }
+
+    .stat-number {
+        @apply text-5xl font-bold mb-2;
+    }
+
+    .stat-number+div {
+        @apply text-gray-700 text-lg;
+    }
+
+    .about-prose {
+        @apply max-w-4xl mx-auto text-gray-700;
+    }
+
+    .about-paragraph {
+        @apply text-xl leading-relaxed mb-6;
+    }
+
+    .about-paragraph:last-child {
+        @apply mb-0;
+    }
+
+    .journey-section {
+        @apply py-20 bg-gradient-to-br from-stone-50 to-amber-50;
+    }
+
+    .journey-container {
+        @apply max-w-7xl mx-auto px-6;
+    }
+
+    .journey-title {
+        @apply text-4xl lg:text-5xl font-bold text-center mb-16 text-gray-800;
+    }
+
+    .timeline-wrapper {
+        @apply relative;
+    }
+
+    .timeline-line {
+        @apply hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full;
+        @apply bg-gradient-to-b from-emerald-300 via-amber-300 to-teal-300;
+    }
+
+    .timeline-list {
+        @apply space-y-12;
+    }
+
+    .timeline-item {
+        @apply relative;
+    }
+
+    .timeline-card-wrapper {
+        @apply lg:w-1/2;
+    }
+
+    .timeline-card-wrapper.right {
+        @apply lg:ml-auto lg:pl-12;
+    }
+
+    .timeline-card-wrapper.left {
+        @apply lg:pr-12;
+    }
+
+    .timeline-card {
+        @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 relative border-l-4;
+    }
+
+    .timeline-dot {
+        @apply hidden lg:block absolute top-8 w-6 h-6 rounded-full bg-white border-4 shadow-lg;
+    }
+
+    .dot-right {
+        @apply -left-[3.95rem];
+    }
+
+    .dot-left {
+        @apply -right-[3.75rem];
+    }
+
+    .timeline-header {
+        @apply flex items-start justify-between mb-4;
+    }
+
+    .job-role {
+        @apply text-2xl font-bold text-gray-800 mb-1;
+    }
+
+    .job-company {
+        @apply text-lg font-semibold mb-2;
+    }
+
+
+    .timeline-meta {
+        @apply flex items-center gap-4 mb-4 text-gray-600;
+    }
+
+    .meta-row {
+        @apply flex items-center gap-2 text-sm;
+    }
+
+    .job-duration {
+        @apply text-sm bg-gray-100 px-3 py-1 rounded-full;
+    }
+
+    .responsibility-list {
+        @apply space-y-2 text-gray-700;
+    }
+
+    .responsibility-list {
+        li {
+
+            @apply flex items-start gap-2;
+        }
+    }
+
+    .card-header {
+        @apply flex items-start justify-between mb-4;
+    }
+
+    .job-title {
+        @apply text-2xl font-bold text-gray-800 mb-1;
+    }
+
+    .job-company {
+        @apply text-lg font-semibold mb-2;
+    }
+
+    .responsibilities {
+        @apply space-y-2;
+    }
+
+    .responsibility-item {
+        @apply flex items-start gap-2 text-gray-700;
+    }
+
+    .skills-section {
+        @apply py-20 bg-white;
+    }
+
+    .progress-grid {
+        @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+    }
+
+
+    .progress-header {
+        @apply mb-2 flex justify-between items-center;
+    }
+
+    .skill-name {
+        @apply text-lg font-semibold text-gray-800;
+    }
+
+    .skill-level {
+        @apply text-sm font-bold text-emerald-600;
+    }
+
+    .progress-bar-container {
+        @apply h-3 bg-gray-200 rounded-full overflow-hidden;
+    }
+
+    .progress-bar {
+        @apply h-full bg-emerald-500 rounded-full transition-all duration-1000 ease-out;
+    }
+
+    .categories-grid {
+        @apply mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6;
+    }
+
+    .category-card {
+        @apply text-center p-6 rounded-xl;
+    }
+
+    .category-card.emerald {
+        @apply bg-gradient-to-br from-emerald-50 to-teal-50;
+    }
+
+    .category-card.amber {
+        @apply bg-gradient-to-br from-amber-50 to-orange-50;
+    }
+
+    .category-card.teal {
+        @apply bg-gradient-to-br from-teal-50 to-cyan-50;
+    }
+
+    .category-card.rose {
+        @apply bg-gradient-to-br from-rose-50 to-pink-50;
+    }
+
+    .category-number {
+        @apply text-3xl font-bold mb-2;
+    }
+
+    .category-number+p {
+        @apply text-gray-600;
+    }
+
+    .projects-section {
+        @apply py-20 bg-gradient-to-br from-stone-50 to-emerald-50;
+    }
+
+    .projects-grid {
+        @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+    }
+
+    .project-card {
+        @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden relative;
+    }
+
+    .project-accent {
+        @apply h-2 bg-gradient-to-r;
+    }
+
+    .project-content {
+        @apply p-8;
+    }
+
+    .project-header {
+        @apply flex items-start justify-between mb-4;
+    }
+
+    .project-title {
+        @apply text-2xl font-bold text-gray-800 flex-1;
+    }
+
+    .project-link {
+        @apply flex-shrink-0 ml-4 p-2 rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 transition-colors;
+    }
+
+    .project-status {
+        @apply flex-shrink-0 ml-4 bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-semibold;
+    }
+
+    .project-tech {
+        @apply text-sm text-emerald-600 font-mono mb-4 leading-relaxed;
+    }
+
+    .project-description {
+        @apply text-gray-700 leading-relaxed;
+    }
+
+    .contact-section {
+        @apply py-20 bg-white;
+    }
+
+    .contact-grid {
+        @apply grid grid-cols-1 lg:grid-cols-2 gap-12;
+    }
+
+    .form-container {
+        @apply space-y-6;
+    }
+
+    .form-group {
+        @apply block;
+    }
+
+    .form-label {
+        @apply block text-gray-700 font-semibold mb-2;
+    }
+
+    .form-input,
+    .form-textarea {
+        @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none transition-colors;
+    }
+
+    .form-textarea {
+        @apply resize-none;
+    }
+
+    .submit-button {
+        @apply w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl font-semibold flex items-center justify-center gap-2;
+    }
+
+    .success-message {
+        @apply bg-emerald-50 border-2 border-emerald-200 rounded-lg p-8 text-center;
+    }
+
+    .success-icon {
+        @apply mx-auto text-emerald-600 mb-4;
+    }
+
+    .success-title {
+        @apply text-2xl font-bold text-emerald-800 mb-2;
+    }
+
+    .success-text {
+        @apply text-emerald-700;
+    }
+
+    .contact-info {
+        @apply space-y-8;
+    }
+
+    .contact-subtitle {
+        @apply text-2xl font-bold text-gray-800 mb-6;
+    }
+
+    .info-list {
+        @apply space-y-4;
+    }
+
+    .info-item {
+        @apply flex items-center gap-4 p-4 rounded-lg hover:shadow-md transition-all;
+    }
+
+    .info-item.emerald {
+        @apply bg-gradient-to-r from-emerald-50 to-teal-50;
+    }
+
+    .info-item.amber {
+        @apply bg-gradient-to-r from-amber-50 to-orange-50;
+    }
+
+    .info-item.teal {
+        @apply bg-gradient-to-r from-teal-50 to-cyan-50;
+    }
+
+    .info-icon-wrapper {
+        @apply p-3 text-white rounded-lg transition-transform;
+    }
+
+    .info-item.emerald .info-icon-wrapper {
+        @apply bg-emerald-600;
+    }
+
+    .info-item.amber .info-icon-wrapper {
+        @apply bg-amber-600;
+    }
+
+    .info-item.teal .info-icon-wrapper {
+        @apply bg-teal-600;
+    }
+
+    .info-type {
+        @apply text-sm text-gray-600;
+    }
+
+    .info-value {
+        @apply font-semibold text-gray-800;
+    }
+
+    .social-links {
+        @apply flex gap-4;
+    }
+
+    .social-link {
+        @apply p-4 text-white rounded-lg hover:shadow-lg transition-all hover:scale-110;
+    }
+
+    .social-link.linkedin {
+        @apply bg-gradient-to-br from-blue-500 to-blue-600;
+    }
+
+    .social-link.github {
+        @apply bg-gradient-to-br from-gray-700 to-gray-900;
+    }
+
+    .social-link.email {
+        @apply bg-gradient-to-br from-emerald-500 to-teal-600;
+    }
+
+    .footer {
+        @apply bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-12;
+    }
+
+    .footer-content {
+        @apply text-center;
+    }
+
+    .footer-title {
+        @apply text-2xl font-bold mb-4;
+    }
+
+    .footer-subtitle {
+        @apply text-gray-400 mb-6;
+    }
+
+    .nav-links {
+        @apply flex justify-center gap-6 mb-8;
+    }
+
+    .nav-link {
+        @apply text-gray-400 hover:text-emerald-400 transition-colors;
+    }
+
+    .footer-bottom {
+        @apply border-t border-gray-700 pt-8;
+    }
+
+    .copyright {
+        @apply text-gray-500;
+    }
+
+    .built-with {
+        @apply text-gray-600 mt-2;
+    }
+}
