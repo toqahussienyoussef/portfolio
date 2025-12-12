@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   app: {
     baseURL: "/portfolio/",
+    buildAssetsDir: "/_nuxt/",
   },
   ssr: false,
   nitro: {
