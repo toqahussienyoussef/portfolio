@@ -2,12 +2,13 @@
 export default defineNuxtConfig({
   app: {
     baseURL: "/portfolio/",
-    buildAssetsDir: "/_nuxt/",
+    cdnURL: "/portfolio/", // Add this line - crucial for GitHub Pages
   },
   ssr: false,
   nitro: {
     prerender: {
       routes: ["/"],
+      crawlLinks: true,
     },
   },
   compatibilityDate: "2025-07-15",
