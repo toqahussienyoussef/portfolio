@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/portfolio/",
     cdnURL: "/portfolio/", // Add this line - crucial for GitHub Pages
-    buildAssetsDir: "/_nuxt/",
   },
   ssr: false,
   nitro: {
