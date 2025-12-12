@@ -3,6 +3,22 @@
 @import 'tailwindcss/utilities';
 
 
+// Variables
+:root {
+
+    --main-color: #749C75;
+    --second-color: #E9D985;
+    --light-bg: #F5F5F5;
+    --text-color: #383838;
+    --title-color: #030303;
+    --light-text: #F5F5F5;
+    --light-title: #ffffff;
+    --main-color-light: #749c753c;
+    --second-color-light: #e9d88538;
+
+}
+
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -14,6 +30,9 @@
         transform: translateY(0);
     }
 }
+
+
+
 
 .animate-fade-in {
     animation: fade-in 0.8s ease-out;
@@ -51,16 +70,19 @@ html {
     }
 
     .header {
-        @apply relative overflow-hidden bg-gradient-to-r from-emerald-800 via-teal-700 to-amber-700 text-white;
+        @apply relative overflow-hidden text-white bg-[url('../images/header-bg.jpg')];
+        background-repeat: no-repeat;
+        background-position: left;
+
     }
 
-    .header-pattern {
-        @apply absolute inset-0 opacity-10;
-    }
+    // .header-pattern {
+    //     @apply absolute inset-0 opacity-10;
+    // }
 
-    .header-pattern-inner {
-        @apply absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00eiIvPjwvZz48L2c+PC9zdmc+')];
-    }
+    // .header-pattern-inner {
+    //     @apply absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00eiIvPjwvZz48L2c+PC9zdmc+')];
+    // }
 
     .header-content-wrapper {
         @apply max-w-7xl mx-auto px-6 py-20 relative z-10;
@@ -79,11 +101,11 @@ html {
     }
 
     .profile-glow {
-        @apply absolute -inset-1 bg-gradient-to-r from-amber-400 via-emerald-400 to-teal-400 rounded-full blur opacity-75 transition duration-1000;
+        @apply absolute -inset-1 bg-gradient-to-r from-[var(--second-color)] via-[var(--main-color)] to-[var(--second-color)] rounded-full blur opacity-50 transition duration-1000;
     }
 
     .profile-image-frame {
-        @apply relative w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-2xl;
+        @apply relative w-[20rem] h-[20rem] rounded-full overflow-hidden shadow-xl;
     }
 
     .profile-image {
@@ -99,11 +121,11 @@ html {
     }
 
     .hero-subtitle {
-        @apply text-2xl lg:text-3xl text-amber-100 mb-6 font-light;
+        @apply text-2xl lg:text-3xl text-[var(--second-color)] mb-6 font-light;
     }
 
     .hero-description {
-        @apply text-lg text-emerald-50 mb-8 max-w-3xl leading-relaxed;
+        @apply text-lg text-[var(--light-text)] mb-8 max-w-3xl leading-relaxed;
     }
 
     .contact-links {
@@ -111,20 +133,25 @@ html {
     }
 
     .contact-link {
-        @apply flex items-center gap-2 bg-white text-emerald-800 px-5 py-3 rounded-lg hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+        @apply flex items-center gap-2 bg-white text-[var(--title-color)] px-5 py-3 rounded-lg hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
     }
 
     .cv-button {
-        @apply flex items-center gap-2 bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-semibold;
+        @apply flex items-center gap-2 bg-[var(--main-color)] text-white px-6 py-3 rounded-lg hover:bg-[var(--second-color)] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-semibold;
     }
 
     .location {
-        @apply flex items-center gap-2 justify-center lg:justify-start mt-6 text-emerald-100;
+        @apply flex items-center gap-2 justify-center lg:justify-start mt-6 text-[var(--light-text)];
     }
 
     /* Sections */
     .section-container {
         @apply max-w-7xl mx-auto px-6;
+    }
+
+    .section-container-about {
+        @apply max-w-4xl mx-auto px-6;
+
     }
 
     .section-title {
@@ -141,6 +168,18 @@ html {
 
     .stat-card {
         @apply p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all;
+    }
+
+    .main-bg-color {
+        @apply bg-[var(--main-color)] text-[var(--light-text)];
+
+        .stat-label {
+            @apply text-[var(--light-text)];
+        }
+    }
+
+    .second-bg-color {
+        @apply bg-[var(--second-color)] text-[var(--text-color)];
     }
 
     .stat-card.emerald {
@@ -176,7 +215,7 @@ html {
     }
 
     .journey-section {
-        @apply py-20 bg-gradient-to-br from-stone-50 to-amber-50;
+        @apply py-20 bg-[var(--light-bg)];
     }
 
     .journey-container {
@@ -193,7 +232,7 @@ html {
 
     .timeline-line {
         @apply hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full;
-        @apply bg-gradient-to-b from-emerald-300 via-amber-300 to-teal-300;
+        @apply bg-[var(--main-color)];
     }
 
     .timeline-list {
@@ -221,7 +260,7 @@ html {
     }
 
     .timeline-dot {
-        @apply hidden lg:block absolute top-8 w-6 h-6 rounded-full bg-white border-4 shadow-lg;
+        @apply hidden lg:block absolute top-8 w-6 h-6 rounded-full bg-[var(--second-color)] border-4 border-white;
     }
 
     .dot-right {
@@ -382,7 +421,7 @@ html {
     }
 
     .project-status {
-        @apply flex-shrink-0 ml-4 bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-semibold;
+        @apply flex-shrink-0 ml-4 bg-[var(--second-color)] text-amber-700 px-3 py-1 rounded-full text-xs font-semibold;
     }
 
     .project-tech {
@@ -415,7 +454,7 @@ html {
 
     .form-input,
     .form-textarea {
-        @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none transition-colors;
+        @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[var(--main-color)] focus:outline-none transition-colors;
     }
 
     .form-textarea {
@@ -423,7 +462,7 @@ html {
     }
 
     .submit-button {
-        @apply w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl font-semibold flex items-center justify-center gap-2;
+        @apply w-full bg-[var(--main-color)] text-white px-8 py-4 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl font-semibold flex items-center justify-center gap-2;
     }
 
     .success-message {
@@ -431,15 +470,15 @@ html {
     }
 
     .success-icon {
-        @apply mx-auto text-emerald-600 mb-4;
+        @apply mx-auto text-[var(--main-color)] mb-4;
     }
 
     .success-title {
-        @apply text-2xl font-bold text-emerald-800 mb-2;
+        @apply text-2xl font-bold text-[var(--main-color)] mb-2;
     }
 
     .success-text {
-        @apply text-emerald-700;
+        @apply text-[var(--main-color)];
     }
 
     .contact-info {
@@ -471,7 +510,7 @@ html {
     }
 
     .info-icon-wrapper {
-        @apply p-3 text-white rounded-lg transition-transform;
+        @apply p-3 text-white rounded-lg bg-[var(--main-color)];
     }
 
     .info-item.emerald .info-icon-wrapper {

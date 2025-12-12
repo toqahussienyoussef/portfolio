@@ -39,18 +39,27 @@
 
             <!-- Contact Links -->
             <div class="contact-links">
-              <a href="mailto:toqauae.2017@gmail.com" class="contact-link">
+              <NuxtLink
+                to="mailto:toqauae.2017@gmail.com"
+                class="contact-link"
+                external
+              >
                 <Mail :size="20" />
                 <span class="font-medium">Email Me</span>
-              </a>
-              <a href="tel:01120328188" class="contact-link">
+              </NuxtLink>
+              <NuxtLink to="tel:01120328188" class="contact-link" external>
                 <Phone :size="20" />
                 <span class="font-medium">01120328188</span>
-              </a>
-              <a href="#" target="_blank" class="contact-link">
+              </NuxtLink>
+              <NuxtLink
+                to="https://www.linkedin.com/in/toqa-hussin-143a5a15b/"
+                class="contact-link"
+                external
+                target="_blank"
+              >
                 <Linkedin :size="20" />
                 <span class="font-medium">LinkedIn</span>
-              </a>
+              </NuxtLink>
               <button @click="downloadCV" class="cv-button">
                 <Download :size="20" />
                 <span>Download CV</span>
@@ -69,19 +78,19 @@
 
     <!-- About Me Section -->
     <section id="about" class="about-section">
-      <div class="section-container">
+      <div class="section-container-about">
         <h2 class="section-title">About Me</h2>
 
         <div class="stats-grid">
-          <div class="stat-card emerald">
+          <div class="stat-card main-bg-color">
             <div class="stat-number">6+</div>
             <div class="stat-label">Years of Experience</div>
           </div>
-          <div class="stat-card amber">
+          <div class="stat-card second-bg-color">
             <div class="stat-number">15+</div>
             <div class="stat-label">Projects Completed</div>
           </div>
-          <div class="stat-card teal">
+          <div class="stat-card main-bg-color">
             <div class="stat-number">5</div>
             <div class="stat-label">Companies Worked</div>
           </div>
@@ -221,7 +230,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
       <div class="section-container">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title">Part Of Featured Projects</h2>
 
         <div class="projects-grid">
           <div
@@ -324,7 +333,7 @@
               <div class="info-list">
                 <a
                   href="mailto:toqauae.2017@gmail.com"
-                  class="info-item emerald"
+                  class="info-item bg-[var(--main-color-light)]"
                 >
                   <div class="info-icon-wrapper">
                     <Mail :size="24" />
@@ -335,8 +344,11 @@
                   </div>
                 </a>
 
-                <a href="tel:01120328188" class="info-item amber">
-                  <div class="info-icon-wrapper">
+                <a
+                  href="tel:01120328188"
+                  class="info-item bg-[var(--second-color-light)]"
+                >
+                  <div class="info-icon-wrapper bg-[var(--second-color)]">
                     <Phone :size="24" />
                   </div>
                   <div>
@@ -345,7 +357,7 @@
                   </div>
                 </a>
 
-                <a href="#" class="info-item teal">
+                <a href="#" class="info-item bg-[var(--main-color-light)]">
                   <div class="info-icon-wrapper">
                     <MapPin :size="24" />
                   </div>
@@ -353,25 +365,6 @@
                     <div class="info-type">Location</div>
                     <div class="info-value">Cairo, Egypt</div>
                   </div>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="contact-subtitle">Connect With Me</h3>
-
-              <div class="social-links">
-                <a href="#" class="social-link linkedin">
-                  <Linkedin :size="28" />
-                </a>
-                <a href="#" class="social-link github">
-                  <Github :size="28" />
-                </a>
-                <a
-                  href="mailto:toqauae.2017@gmail.com"
-                  class="social-link email"
-                >
-                  <Mail :size="28" />
                 </a>
               </div>
             </div>
@@ -411,6 +404,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+const toast = useToast();
 import {
   Mail,
   Phone,
@@ -549,11 +543,62 @@ const projects = ref([
     link: "https://admin.bayank.sa/",
     color: "rose",
   },
+
+  {
+    title: "Sahm - logistic Mangment Platform",
+    tech: "HTML , SCSS , Javascript , Laravel , Bootstrap ",
+    description:
+      "Crafted a modern, responsive frontend using Laravel Blade templates integrated with Bootstrap 5 for component-based UI design. Utilized Vite 4 for fast hot module replacement and optimized asset bundling, with Sass for modular styling. Incorporated Axios for efficient API communications and Popper.js for dynamic positioning in dropdowns and tooltips, ensuring a seamless user experience across devices.",
+    link: "https://supply-ways.com/",
+    color: "rose",
+  },
+  {
+    title: "E-Commerce Platform - Basta Store",
+    tech: "Vue 3, Nuxt 3, Vuetify 3, Chart.js 4, NextAuth, i18n v8, ReCAPTCHA v3",
+    description:
+      "Built a full-stack e-commerce application from scratch, featuring user authentication, product catalog with search and filters, shopping cart, and secure payment integration. Optimized for performance with lazy loading and implemented responsive design for seamless mobile and desktop experiences.",
+    status: "To Be Released",
+    color: "amber",
+  },
+  {
+    title: "San wa Hukm - Realistic Baloot Card Game Platform",
+    tech: "HTML , SCSS , Javascript , Laravel 10, Bootstrap 5, Vite",
+    description:
+      "Developed an engaging entertainment app focused on realistic mental and card games, particularly Baloot. Users can create sessions, invite friends, and join competitive multiplayer games. Features a dynamic environment that enhances interactivity and excitement through organized play, result tracking, and community-driven competitions.",
+    link: "https://sunhakam.com/",
+    color: "indigo",
+  },
 ]);
 
-const downloadCV = () => {
-  // Implement CV download logic
-  alert("CV download functionality - Add your CV file path here");
+const downloadCV = async () => {
+  const pdfPath = "/files/Senior_FRONTEND_TOQA_HUSSIEN_CV.pdf";
+
+  try {
+    const response = await $fetch.raw(pdfPath, { method: "HEAD" });
+
+    if (response.ok) {
+      const link = document.createElement("a");
+      link.href = pdfPath;
+      link.download = "Senior_FRONTEND_TOQA_HUSSIEN_CV.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      toast.success({
+        title: "Success!",
+        message: "CV Download completed successfully.",
+      });
+    } else {
+      throw new Error(`HTTP ${response.status}: File not accessible`);
+    }
+  } catch (error) {
+    console.error("Download error:", error);
+    toast.error({
+      title: "Error!",
+      message:
+        "Something went wrong. Please check the file path or try again later.",
+    });
+  }
 };
 
 const submitForm = () => {

@@ -647,7 +647,9 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {
+    "nuxtToastSettings": {}
+  }
 };
 const envOptions = {
   prefix: "NITRO_",
