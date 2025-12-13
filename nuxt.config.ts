@@ -1,9 +1,9 @@
 export default defineNuxtConfig({
   ssr: false,
 
-  // app: {
-  //   baseURL: "/portfolio/",
-  // },
+  app: {
+    baseURL: "/portfolio/",
+  },
 
   nitro: {
     preset: "github_pages",
