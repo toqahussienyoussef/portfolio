@@ -1,19 +1,19 @@
 <template>
   <div class="hero">
     <!-- Navigation Bar -->
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="Primary Navigation">
       <div class="nav-container">
         <!-- Logo -->
         <a href="/" class="nav-logo">ToQa Hussien</a>
 
         <!-- Desktop Links -->
-        <div class="nav-links-desktop">
-          <a href="#about" class="nav-item">About</a>
-          <a href="#journey" class="nav-item">Journey</a>
-          <a href="#skills" class="nav-item">Skills</a>
-          <a href="#projects" class="nav-item">Projects</a>
-          <a href="#contact" class="nav-item nav-cta">Contact</a>
-        </div>
+        <ul class="nav-links-desktop">
+          <li href="#about" class="nav-item">About</li>
+          <li href="#journey" class="nav-item">Journey</li>
+          <li href="#skills" class="nav-item">Skills</li>
+          <li href="#projects" class="nav-item">Projects</li>
+          <li href="#contact" class="nav-item nav-cta">Contact</li>
+        </ul>
 
         <!-- Mobile Burger -->
         <button
@@ -63,6 +63,7 @@
                 <div class="profile-image-frame">
                   <img
                     src="~/assets/images/Toqa_img.jpg"
+                    loading="lazy"
                     alt="Toqa Hussien"
                     class="profile-image"
                   />
@@ -477,6 +478,37 @@ import {
   Send,
   CheckCircle,
 } from "lucide-vue-next";
+
+useSeoMeta({
+  title: "Toqa Hussien Youssef | Senior Frontend Developer (Vue & Nuxt)",
+  description:
+    "Senior Frontend Developer with 6+ years of experience specializing in Vue.js, Nuxt.js, Tailwind CSS, and modern UI development. Based in Cairo, Egypt.",
+
+  keywords:
+    "Senior Frontend Developer, Vue.js, Nuxt.js, Tailwind CSS, Frontend Engineer, Cairo Egypt",
+
+  author: "Toqa Hussien Youssef",
+
+  robots: "index, follow",
+});
+useSeoMeta({
+  ogTitle: "Toqa Hussien Youssef | Senior Frontend Developer",
+  ogDescription:
+    "Senior Frontend Developer specializing in Vue.js & Nuxt.js with strong experience in scalable, user-centric web applications.",
+  ogType: "website",
+  ogUrl: "https://toqahussienyoussef.github.io/portfolio/",
+  ogImage:
+    "https://toqahussienyoussef.github.io/portfolio/Toqa_img.yZTTQ72J.jpg",
+});
+
+useHead({
+  link: [
+    {
+      rel: "canonical",
+      href: "https://toqahussienyoussef.github.io/portfolio/",
+    },
+  ],
+});
 
 const menuOpen = ref(false);
 
