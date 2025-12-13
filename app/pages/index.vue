@@ -1,5 +1,52 @@
 <template>
   <div class="hero">
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+      <div class="nav-container">
+        <!-- Logo -->
+        <a href="/" class="nav-logo">ToQa Hussien</a>
+
+        <!-- Desktop Links -->
+        <div class="nav-links-desktop">
+          <a href="#about" class="nav-item">About</a>
+          <a href="#journey" class="nav-item">Journey</a>
+          <a href="#skills" class="nav-item">Skills</a>
+          <a href="#projects" class="nav-item">Projects</a>
+          <a href="#contact" class="nav-item nav-cta">Contact</a>
+        </div>
+
+        <!-- Mobile Burger -->
+        <button
+          class="nav-burger md:hidden"
+          @click="menuOpen = true"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile Overlay -->
+    <div v-if="menuOpen" class="nav-overlay" @click="menuOpen = false"></div>
+
+    <!-- Mobile Side Menu -->
+    <aside v-if="menuOpen" class="nav-mobile" :class="{ open: menuOpen }">
+      <button
+        class="nav-close"
+        @click="menuOpen = false"
+        aria-label="Close menu"
+      >
+        ✕
+      </button>
+
+      <a href="#about" @click="menuOpen = false">About</a>
+      <a href="#journey" @click="menuOpen = false">Journey</a>
+      <a href="#skills" @click="menuOpen = false">Skills</a>
+      <a href="#projects" @click="menuOpen = false">Projects</a>
+      <a href="#contact" @click="menuOpen = false" class="cta"> Contact </a>
+    </aside>
+
     <!-- Header Section -->
     <header class="header">
       <div class="blue-header-bg">
@@ -431,7 +478,8 @@ import {
   CheckCircle,
 } from "lucide-vue-next";
 
-const activeSkill = ref(null);
+const menuOpen = ref(false);
+
 const animatedSkills = ref(new Array(12).fill(false)); // Matches skills.length
 
 const timeline = ref([
@@ -451,7 +499,7 @@ const timeline = ref([
     company: "QuadraTech Software Company",
     role: "Senior Front-End Developer",
     period: "March 2022 – January 2025",
-    duration: "2 years 10 months",
+    duration: "2 yrs,10 mos",
     responsibilities: [
       "Led the front-end development team and trained new trainees",
       "Specialized in Vue.js, Nuxt.js, Vuetify, Vuex, Pinia, BootstrapVue, HTML5, CSS3, Javascript, and Agile",
@@ -464,7 +512,7 @@ const timeline = ref([
     company: "Shifters Software Company",
     role: "Front-End Developer",
     period: "July 2019 – March 2022",
-    duration: "2 years 8 months",
+    duration: "2 yrs 8 mos",
     responsibilities: [
       "Worked with HTML, CSS, JavaScript, Bootstrap, jQuery, Vue.js, and Jira",
       "Developed dynamic UIs and maintained multiple client projects",

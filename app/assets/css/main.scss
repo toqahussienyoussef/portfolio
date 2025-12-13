@@ -69,6 +69,82 @@ html {
         @apply min-h-screen bg-gradient-to-br from-stone-50 via-amber-50 to-emerald-50;
     }
 
+    /* ===== Navigation ===== */
+    .main-nav {
+        @apply absolute top-0 left-0 w-full z-50 backdrop-blur-md;
+    }
+
+    .nav-container {
+        @apply max-w-7xl mx-auto px-6 h-16 flex items-center justify-between;
+    }
+
+    .nav-logo {
+        @apply text-xl font-bold text-[var(--light-text)] hover:text-[var(--main-color)] transition-colors;
+    }
+
+    .nav-links-desktop {
+        @apply hidden md:flex items-center gap-6;
+    }
+
+    .nav-item {
+        @apply text-[var(--light-text)] font-medium relative transition-colors;
+    }
+
+    .nav-item::after {
+        content: '';
+        @apply absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--main-color)] transition-all duration-300;
+    }
+
+    .nav-item:hover {
+        @apply text-[var(--main-color)];
+    }
+
+    .nav-item:hover::after {
+        @apply w-full;
+    }
+
+    /* CTA button */
+    .nav-cta {
+        @apply px-4 py-2 rounded-lg bg-[var(--main-color)] text-white hover:bg-[var(--light-text)];
+    }
+
+    /* ===== Mobile Navigation ===== */
+
+    .nav-burger {
+        @apply flex flex-col justify-between w-6 h-5 cursor-pointer;
+    }
+
+    .nav-burger span {
+        @apply block h-0.5 w-full bg-[var(--light-text)] rounded;
+    }
+
+    /* Overlay */
+    .nav-overlay {
+        @apply fixed inset-0 bg-black/50 z-40;
+    }
+
+    /* Side menu */
+    .nav-mobile {
+        @apply fixed top-0 right-0 h-full w-72 bg-white z-[100] transform translate-x-full transition-transform duration-300 flex flex-col gap-6 p-8;
+        isolation: isolate;
+    }
+
+    .nav-mobile.open {
+        @apply translate-x-0;
+    }
+
+    .nav-mobile a {
+        @apply text-lg font-semibold text-gray-800 hover:text-[var(--main-color)] transition-colors;
+    }
+
+    .nav-mobile .cta {
+        @apply mt-4 inline-block px-6 py-3 rounded-lg bg-[var(--main-color)] text-white text-center hover:bg-[var(--second-color)];
+    }
+
+    .nav-close {
+        @apply self-end text-2xl text-gray-500 hover:text-gray-800 mb-6;
+    }
+
     .header {
         @apply relative overflow-hidden text-white bg-black bg-[url('../images/header-bg.webp')];
         background-repeat: no-repeat;
@@ -297,7 +373,7 @@ html {
     }
 
     .job-duration {
-        @apply text-sm bg-gray-100 px-3 py-1 rounded-full;
+        @apply text-sm bg-gray-100 px-3 py-1 rounded-full min-w-fit;
     }
 
     .responsibility-list {
