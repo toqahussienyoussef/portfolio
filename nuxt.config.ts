@@ -1,22 +1,17 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    baseURL: "/portfolio/",
-    buildAssetsDir: "/_nuxt/",
-  },
-
   ssr: false,
 
+  app: {
+    baseURL: "/portfolio/",
+  },
+
   nitro: {
-    preset: "static",
+    preset: "github_pages",
     prerender: {
       crawlLinks: true,
       routes: ["/"],
     },
   },
-
-  compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
 
   css: ["~/assets/css/main.scss"],
 

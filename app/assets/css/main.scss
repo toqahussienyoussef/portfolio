@@ -70,9 +70,13 @@ html {
     }
 
     .header {
-        @apply relative overflow-hidden text-white bg-[url('../images/header-bg.jpg')];
+        @apply relative overflow-hidden text-white bg-black bg-[url('../images/header-bg.webp')];
         background-repeat: no-repeat;
         background-position: left;
+
+        .blue-header-bg {
+            @apply bg-black/5 backdrop-blur-sm p-6 rounded-xl;
+        }
 
     }
 
@@ -353,7 +357,7 @@ html {
     }
 
     .progress-bar {
-        @apply h-full bg-emerald-500 rounded-full transition-all duration-1000 ease-out;
+        @apply h-full bg-[var(--main-color)] rounded-full transition-all duration-1000 ease-out;
     }
 
     .categories-grid {
@@ -421,7 +425,7 @@ html {
     }
 
     .project-status {
-        @apply flex-shrink-0 ml-4 bg-[var(--second-color)] text-amber-700 px-3 py-1 rounded-full text-xs font-semibold;
+        @apply flex-shrink-0 ml-4 bg-[var(--second-color-light)] text-[var(--second-color)] px-3 py-1 rounded-full text-xs font-semibold;
     }
 
     .project-tech {

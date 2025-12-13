@@ -2,74 +2,76 @@
   <div class="hero">
     <!-- Header Section -->
     <header class="header">
-      <div class="header-pattern">
-        <div class="header-pattern-inner"></div>
-      </div>
+      <div class="blue-header-bg">
+        <div class="header-pattern">
+          <div class="header-pattern-inner"></div>
+        </div>
 
-      <div class="header-content-wrapper">
-        <div class="header-flex">
-          <!-- Profile Image -->
-          <div class="profile-image-container">
-            <div class="profile-image-group">
-              <div class="profile-glow"></div>
-              <div class="profile-image-frame">
-                <img
-                  src="~/assets/images/Toqa_img.jpg"
-                  alt="Toqa Hussien"
-                  class="profile-image"
-                />
+        <div class="header-content-wrapper">
+          <div class="header-flex">
+            <!-- Profile Image -->
+            <div class="profile-image-container">
+              <div class="profile-image-group">
+                <div class="profile-glow"></div>
+                <div class="profile-image-frame">
+                  <img
+                    src="~/assets/images/Toqa_img.jpg"
+                    alt="Toqa Hussien"
+                    class="profile-image"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Header Content -->
-          <div class="header-text">
-            <h1 class="hero-title">Toqa Hussien Youssef</h1>
-            <p class="hero-subtitle">
-              Senior Frontend Developer | Vue.js & Nuxt.js Specialist
-            </p>
-            <p class="hero-description">
-              Senior Front-End Developer with extensive experience across all
-              stages of the front-end development lifecycle for dynamic,
-              user-centric web applications. Specialized in Vue.js, modern UI
-              frameworks, responsive design, and performance optimization.
-              Strong background in WordPress, Laravel, Umbraco, Agile
-              development, and leading development teams.
-            </p>
+            <!-- Header Content -->
+            <div class="header-text">
+              <h1 class="hero-title">Toqa Hussien Youssef</h1>
+              <p class="hero-subtitle">
+                Senior Frontend Developer | Vue.js & Nuxt.js Specialist
+              </p>
+              <p class="hero-description">
+                Senior Front-End Developer with extensive experience across all
+                stages of the front-end development lifecycle for dynamic,
+                user-centric web applications. Specialized in Vue.js, modern UI
+                frameworks, responsive design, and performance optimization.
+                Strong background in WordPress, Laravel, Umbraco, Agile
+                development, and leading development teams.
+              </p>
 
-            <!-- Contact Links -->
-            <div class="contact-links">
-              <NuxtLink
-                to="mailto:toqauae.2017@gmail.com"
-                class="contact-link"
-                external
-              >
-                <Mail :size="20" />
-                <span class="font-medium">Email Me</span>
-              </NuxtLink>
-              <NuxtLink to="tel:01120328188" class="contact-link" external>
-                <Phone :size="20" />
-                <span class="font-medium">01120328188</span>
-              </NuxtLink>
-              <NuxtLink
-                to="https://www.linkedin.com/in/toqa-hussin-143a5a15b/"
-                class="contact-link"
-                external
-                target="_blank"
-              >
-                <Linkedin :size="20" />
-                <span class="font-medium">LinkedIn</span>
-              </NuxtLink>
-              <button @click="downloadCV" class="cv-button">
-                <Download :size="20" />
-                <span>Download CV</span>
-              </button>
-            </div>
+              <!-- Contact Links -->
+              <div class="contact-links">
+                <NuxtLink
+                  to="mailto:toqauae.2017@gmail.com"
+                  class="contact-link"
+                  external
+                >
+                  <Mail :size="20" />
+                  <span class="font-medium">Email Me</span>
+                </NuxtLink>
+                <NuxtLink to="tel:01120328188" class="contact-link" external>
+                  <Phone :size="20" />
+                  <span class="font-medium">01120328188</span>
+                </NuxtLink>
+                <NuxtLink
+                  to="https://www.linkedin.com/in/toqa-hussin-143a5a15b/"
+                  class="contact-link"
+                  external
+                  target="_blank"
+                >
+                  <Linkedin :size="20" />
+                  <span class="font-medium">LinkedIn</span>
+                </NuxtLink>
+                <button @click="downloadCV" class="cv-button">
+                  <Download :size="20" />
+                  <span>Download CV</span>
+                </button>
+              </div>
 
-            <!-- Location -->
-            <div class="location">
-              <MapPin :size="18" />
-              <span>Cairo, Egypt</span>
+              <!-- Location -->
+              <div class="location">
+                <MapPin :size="18" />
+                <span>Cairo, Egypt</span>
+              </div>
             </div>
           </div>
         </div>
@@ -206,7 +208,7 @@
         </div>
 
         <!-- Skill Categories -->
-        <div class="categories-grid">
+        <!-- <div class="categories-grid">
           <div class="category-card emerald">
             <div class="category-number">Core</div>
             <p class="category-text">HTML, CSS, JS, TS</p>
@@ -223,7 +225,7 @@
             <div class="category-number">Tools</div>
             <p class="category-text">Git, Jira, APIs</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -279,40 +281,51 @@
           <!-- Contact Form -->
           <div>
             <div v-if="!formSubmitted" class="form-container">
-              <div class="form-group">
-                <label class="form-label">Your Name</label>
-                <input
-                  v-model="formData.name"
-                  type="text"
-                  class="form-input"
-                  placeholder="Enter your name"
-                />
-              </div>
+              <form action="https://formspree.io/f/xqarnyak" method="POST">
+                <div class="form-group">
+                  <label class="form-label" for="name">Your Name</label>
+                  <input
+                    v-model="formData.name"
+                    id="name"
+                    name="name"
+                    type="text"
+                    class="form-input"
+                    required
+                    placeholder="Enter your name"
+                  />
+                </div>
 
-              <div class="form-group">
-                <label class="form-label">Your Email</label>
-                <input
-                  v-model="formData.email"
-                  type="email"
-                  class="form-input"
-                  placeholder="Enter your email"
-                />
-              </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Your Email</label>
+                  <input
+                    v-model="formData.email"
+                    id="email"
+                    name="email"
+                    type="email"
+                    class="form-input"
+                    required
+                    placeholder="Enter your email"
+                  />
+                </div>
 
-              <div class="form-group">
-                <label class="form-label">Your Message</label>
-                <textarea
-                  v-model="formData.message"
-                  rows="6"
-                  class="form-textarea"
-                  placeholder="Write your message here..."
-                ></textarea>
-              </div>
+                <div class="form-group">
+                  <label class="form-label" for="message">Your Message</label>
+                  <textarea
+                    v-model="formData.message"
+                    id="message"
+                    name="message"
+                    required
+                    rows="6"
+                    class="form-textarea"
+                    placeholder="Write your message here..."
+                  ></textarea>
+                </div>
 
-              <button @click="submitForm" class="submit-button">
-                <Send :size="20" />
-                <span>Send Message</span>
-              </button>
+                <button @click="submitForm" class="submit-button">
+                  <Send :size="20" />
+                  <span>Send Message</span>
+                </button>
+              </form>
             </div>
 
             <div v-else class="success-message">
@@ -419,8 +432,6 @@ import {
 } from "lucide-vue-next";
 
 const activeSkill = ref(null);
-const formData = ref({ name: "", email: "", message: "" });
-const formSubmitted = ref(false);
 const animatedSkills = ref(new Array(12).fill(false)); // Matches skills.length
 
 const timeline = ref([
@@ -571,7 +582,7 @@ const projects = ref([
 ]);
 
 const downloadCV = async () => {
-  const pdfPath = "/files/Senior_FRONTEND_TOQA_HUSSIEN_CV.pdf";
+  const pdfPath = "/portfolio/files/Senior_FRONTEND_TOQA_HUSSIEN_CV.pdf";
 
   try {
     const response = await $fetch.raw(pdfPath, { method: "HEAD" });
@@ -601,19 +612,55 @@ const downloadCV = async () => {
   }
 };
 
-const submitForm = () => {
-  if (formData.value.name && formData.value.email && formData.value.message) {
-    // Here you would typically send the form data to a backend
-    console.log("Form submitted:", formData.value);
+// Form functionality
+
+const formData = ref({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const formSubmitted = ref(false);
+const isLoading = ref(false);
+
+const submitForm = async () => {
+  if (
+    !formData.value.name ||
+    !formData.value.email ||
+    !formData.value.message
+  ) {
+    toast.warning({
+      title: "Warning!",
+      message: "Please fill in all fields.",
+    });
+    return;
+  }
+
+  isLoading.value = true;
+
+  try {
+    const response = await $fetch("https://formspree.io/f/xqarnyak", {
+      method: "POST",
+      body: {
+        name: formData.value.name,
+        email: formData.value.email,
+        message: formData.value.message,
+      },
+    });
+
     formSubmitted.value = true;
 
-    // Reset form after 5 seconds
     setTimeout(() => {
       formSubmitted.value = false;
       formData.value = { name: "", email: "", message: "" };
     }, 5000);
-  } else {
-    alert("Please fill in all fields");
+  } catch (error) {
+    toast.error({
+      title: "Error!",
+      message: "Something went wrong. Please try again.",
+    });
+  } finally {
+    isLoading.value = false;
   }
 };
 
