@@ -8,11 +8,11 @@
 
         <!-- Desktop Links -->
         <ul class="nav-links-desktop">
-          <li href="#about" class="nav-item">About</li>
-          <li href="#journey" class="nav-item">Journey</li>
-          <li href="#skills" class="nav-item">Skills</li>
-          <li href="#projects" class="nav-item">Projects</li>
-          <li href="#contact" class="nav-item nav-cta">Contact</li>
+          <a href="#about" class="nav-item">About</a>
+          <a href="#journey" class="nav-item">Journey</a>
+          <a href="#skills" class="nav-item">Skills</a>
+          <a href="#projects" class="nav-item">Projects</a>
+          <a href="#contact" class="nav-item nav-cta">Contact</a>
         </ul>
 
         <!-- Mobile Burger -->
