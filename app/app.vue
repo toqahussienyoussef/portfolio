@@ -5,12 +5,13 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
+
 useHead({
   link: [
     {
       rel: "icon",
-      type: "image/png",
-      href: "/portfolio/favicon.png",
+      href: `${config.app.baseURL}favicon.ico`,
     },
   ],
 });
