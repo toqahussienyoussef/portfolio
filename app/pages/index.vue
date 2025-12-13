@@ -4,7 +4,7 @@
     <nav class="main-nav" aria-label="Primary Navigation">
       <div class="nav-container">
         <!-- Logo -->
-        <a href="/" class="nav-logo">ToQa Hussien</a>
+        <a href="/portfolio" class="nav-logo">ToQa Hussien</a>
 
         <!-- Desktop Links -->
         <ul class="nav-links-desktop">
