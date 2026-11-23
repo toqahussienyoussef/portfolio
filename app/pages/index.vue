@@ -1,10 +1,10 @@
 <template>
-  <div class="hero">
+  <div class="hero" @keydown.esc.window="menuOpen = false">
     <!-- Navigation Bar -->
     <nav class="main-nav" aria-label="Primary Navigation">
       <div class="nav-container">
         <!-- Logo -->
-        <a href="/portfolio" class="nav-logo">ToQa Hussien</a>
+        <a href="/portfolio/" class="nav-logo">ToQa Hussien</a>
 
         <!-- Desktop Links -->
         <ul class="nav-links-desktop">
@@ -20,6 +20,8 @@
           class="nav-burger md:hidden"
           @click="menuOpen = true"
           aria-label="Open menu"
+          :aria-expanded="menuOpen"
+          aria-controls="mobile-navigation"
         >
           <span></span>
           <span></span>
@@ -31,7 +33,12 @@
     <div v-if="menuOpen" class="nav-overlay" @click="menuOpen = false"></div>
 
     <!-- Mobile Side Menu -->
-    <aside v-if="menuOpen" class="nav-mobile" :class="{ open: menuOpen }">
+    <aside
+      v-if="menuOpen"
+      id="mobile-navigation"
+      class="nav-mobile"
+      :class="{ open: menuOpen }"
+    >
       <button
         class="nav-close"
         @click="menuOpen = false"
@@ -50,8 +57,16 @@
     <!-- Header Section -->
     <header class="header">
       <div class="blue-header-bg">
-        <div class="header-pattern">
-          <div class="header-pattern-inner"></div>
+        <div class="header-pattern" aria-hidden="true">
+          <pre class="header-code"><code><span>app.vue</span>
+
+&lt;script setup lang="ts"&gt;
+  const framework = 'Nuxt'
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;NuxtPage /&gt;
+&lt;/template&gt;</code></pre>
         </div>
 
         <div class="header-content-wrapper">
@@ -62,7 +77,7 @@
                 <div class="profile-glow"></div>
                 <div class="profile-image-frame">
                   <img
-                    src="~/assets/images/Toqa_img.jpg"
+                    :src="`${config.app.baseURL}images/toqa-hussien.jpg`"
                     loading="lazy"
                     alt="Toqa Hussien"
                     class="profile-image"
@@ -75,15 +90,15 @@
             <div class="header-text">
               <h1 class="hero-title">Toqa Hussien Youssef</h1>
               <p class="hero-subtitle">
-                Senior Frontend Developer | Vue.js & Nuxt.js Specialist
+                Senior Frontend Developer & Acting Frontend Lead
               </p>
               <p class="hero-description">
-                Senior Front-End Developer with extensive experience across all
-                stages of the front-end development lifecycle for dynamic,
-                user-centric web applications. Specialized in Vue.js, modern UI
-                frameworks, responsive design, and performance optimization.
-                Strong background in WordPress, Laravel, Umbraco, Agile
-                development, and leading development teams.
+                I build Vue and Nuxt products from their first frontend
+                architecture through launch, and help teams grow with them. At
+                E-Systematic, I built the foundation for a multi-tenant
+                real-estate CRM and microsites,
+                then grew into technical leadership as our frontend team
+                expanded from two to nine developers.
               </p>
 
               <!-- Contact Links -->
@@ -109,10 +124,14 @@
                   <Linkedin :size="20" />
                   <span class="font-medium">LinkedIn</span>
                 </NuxtLink>
-                <button @click="downloadCV" class="cv-button">
+                <a
+                  :href="`${config.app.baseURL}files/${leadCvFilename}`"
+                  :download="leadCvFilename"
+                  class="cv-button"
+                >
                   <Download :size="20" />
-                  <span>Download CV</span>
-                </button>
+                  <span>upload CV</span>
+                </a>
               </div>
 
               <!-- Location -->
@@ -133,32 +152,34 @@
 
         <div class="stats-grid">
           <div class="stat-card main-bg-color">
-            <div class="stat-number">6+</div>
+            <div class="stat-number">8+</div>
             <div class="stat-label">Years of Experience</div>
           </div>
           <div class="stat-card second-bg-color">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Projects Completed</div>
+            <div class="stat-number">9</div>
+            <div class="stat-label">Frontend Developers Led</div>
           </div>
           <div class="stat-card main-bg-color">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Companies Worked</div>
+            <div class="stat-number">6</div>
+            <div class="stat-label">Microsite Templates Delivered</div>
           </div>
         </div>
 
         <div class="about-prose">
           <p class="about-paragraph">
-            I'm a passionate Senior Front-End Developer based in Cairo, Egypt,
-            with a proven track record of delivering high-quality, user-centric
-            web applications. My journey in web development spans over 6 years,
-            during which I've specialized in Vue.js and Nuxt.js ecosystems.
+            I'm a Senior Frontend Developer based in Cairo, Egypt, with 8+
+            years of experience building user-focused web applications. I
+            specialize in Vue.js and Nuxt.js, from frontend architecture and
+            hands-on implementation to the technical leadership that helps a
+            team deliver together.
           </p>
           <p class="about-paragraph">
-            Throughout my career, I've had the privilege of leading development
-            teams, mentoring junior developers, and architecting complex
-            enterprise applications. I'm deeply committed to writing clean,
-            maintainable code and implementing best practices in performance
-            optimization and responsive design.
+            At E-Systematic, I established the frontend foundation for a
+            multi-tenant real-estate CRM and its microsites, contributing across
+            more than 10 modules. I built account settings and calendar
+            workflows, and worked on responsive templates for public property
+            websites. As the frontend team grew from two developers to nine,
+            I took on technical planning, estimates and code reviews.
           </p>
         </div>
       </div>
@@ -167,64 +188,66 @@
     <!-- Journey Timeline Section -->
     <section id="journey" class="journey-section">
       <div class="journey-container">
-        <h2 class="journey-title">My Journey</h2>
-
-        <div class="timeline-wrapper">
-          <!-- Timeline vertical line -->
-          <div class="timeline-line"></div>
-
-          <!-- Timeline Items -->
-          <div class="timeline-list">
-            <div
-              v-for="(job, index) in timeline"
-              :key="index"
-              class="timeline-item"
-            >
-              <div
-                :class="[
-                  'timeline-card-wrapper',
-                  index % 2 === 0 ? 'right' : 'left',
-                ]"
-              >
-                <div class="timeline-card" :class="`border-${job.color}-500`">
-                  <!-- Timeline Dot -->
-                  <div
-                    class="timeline-dot"
-                    :class="[
-                      index % 2 === 0 ? 'dot-right' : 'dot-left',
-                      `border-${job.color}-500`,
-                    ]"
-                  ></div>
-
-                  <div class="timeline-header">
-                    <div>
-                      <h3 class="job-role">{{ job.role }}</h3>
-                      <p class="job-company" :class="`text-${job.color}-600`">
-                        {{ job.company }}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="timeline-meta">
-                    <div class="meta-row">
-                      <Calendar :size="16" />
-                      <span>{{ job.period }}</span>
-                    </div>
-
-                    <span class="job-duration">
-                      {{ job.duration }}
-                    </span>
-                  </div>
-
-                  <ul class="responsibility-list">
-                    <li v-for="(resp, idx) in job.responsibilities" :key="idx">
-                      <span>{{ resp }}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+        <div class="journey-heading">
+          <div>
+            <p class="journey-eyebrow">CAREER PATH</p>
+            <h2 class="journey-title">My Journey</h2>
           </div>
+          <p class="journey-intro">
+            From my first frontend role to leading teams and building products,
+            here are the steps along the way.
+          </p>
+        </div>
+
+        <div class="timeline-list">
+          <article
+            v-for="(job, index) in timeline"
+            :key="job.company"
+            class="timeline-item"
+            :class="{ 'timeline-item-current': index === 0 }"
+          >
+            <span class="timeline-step" aria-hidden="true">
+              {{ String(index + 1).padStart(2, "0") }}
+            </span>
+
+            <details class="timeline-card">
+              <summary class="timeline-summary">
+                <span class="timeline-summary-main">
+                  <span class="job-company">
+                    {{ job.company }}
+                    <span v-if="index === 0" class="current-role-badge">
+                      Current
+                    </span>
+                  </span>
+                  <span class="job-role">{{ job.role }}</span>
+                  <span class="timeline-meta">
+                    <span class="meta-row">
+                      <Calendar :size="15" aria-hidden="true" />
+                      {{ job.period }}
+                    </span>
+                    <span class="job-duration">{{ job.duration }}</span>
+                  </span>
+                </span>
+                <span class="timeline-toggle">
+                  <span class="timeline-toggle-open">View highlights</span>
+                  <span class="timeline-toggle-close">Hide highlights</span>
+                  <span class="timeline-toggle-icon" aria-hidden="true"></span>
+                </span>
+              </summary>
+
+              <div class="timeline-details">
+                <p class="timeline-summary-text">{{ job.summary }}</p>
+                <ul class="responsibility-list">
+                  <li
+                    v-for="(resp, idx) in job.responsibilities"
+                    :key="`${job.company}-${idx}`"
+                  >
+                    {{ resp }}
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </article>
         </div>
       </div>
     </section>
@@ -277,10 +300,12 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
+    <ProjectShowcase />
+
+    <!-- Earlier projects remain part of the portfolio. -->
+    <section id="legacy-projects" class="projects-section">
       <div class="section-container">
-        <h2 class="section-title">Part Of Featured Projects</h2>
+        <h2 class="section-title">Earlier Featured Projects</h2>
 
         <div class="projects-grid">
           <div
@@ -482,7 +507,7 @@ import {
 useSeoMeta({
   title: "Toqa Hussien Youssef | Senior Frontend Developer (Vue & Nuxt)",
   description:
-    "Senior Frontend Developer with 6+ years of experience specializing in Vue.js, Nuxt.js, Tailwind CSS, and modern UI development. Based in Cairo, Egypt.",
+    "Senior Frontend Developer and Acting Frontend Lead with 8+ years of experience building Vue and Nuxt products, CRM platforms, microsites, and frontend teams. Based in Cairo, Egypt.",
 
   keywords:
     "Senior Frontend Developer, Vue.js, Nuxt.js, Tailwind CSS, Frontend Engineer, Cairo Egypt",
@@ -492,13 +517,13 @@ useSeoMeta({
   robots: "index, follow",
 });
 useSeoMeta({
-  ogTitle: "Toqa Hussien Youssef | Senior Frontend Developer",
+  ogTitle: "Toqa Hussien Youssef | Senior Frontend Developer & Acting Frontend Lead",
   ogDescription:
-    "Senior Frontend Developer specializing in Vue.js & Nuxt.js with strong experience in scalable, user-centric web applications.",
+    "Building Vue and Nuxt products from architecture to launch, and helping frontend teams grow with them.",
   ogType: "website",
   ogUrl: "https://toqahussienyoussef.github.io/portfolio/",
   ogImage:
-    "https://toqahussienyoussef.github.io/portfolio/Toqa_img.yZTTQ72J.jpg",
+    "https://toqahussienyoussef.github.io/portfolio/images/toqa-hussien.jpg",
 });
 
 useHead({
@@ -512,14 +537,36 @@ useHead({
 
 const menuOpen = ref(false);
 
+const config = useRuntimeConfig();
+const leadCvFilename = "Toqa_Hussien_Frontend_Team_Lead_CV.pdf";
+
 const animatedSkills = ref(new Array(12).fill(false)); // Matches skills.length
 
 const timeline = ref([
   {
+    company: "E-Systematic",
+    role: "Senior Frontend Developer / Acting Frontend Lead",
+    period: "February 2026 – Present",
+    duration: "Present",
+    summary:
+      "Built the initial frontend foundation for a multi-tenant real-estate CRM and microsites, then grew into technical leadership as the team expanded to nine developers.",
+    responsibilities: [
+      "Established the frontend architecture for a multi-tenant CRM and its public real-estate microsites",
+      "Built Profile Settings and Calendar/To-Do end to end, including account verification and activities linked to CRM records",
+      "Implemented brokerage and office settings, listing forms, and buyer preferences for property matching",
+      "Created shared tabs, pagination, and account inputs reused across product modules",
+      "Guided technical planning, estimates, reviews, and work distribution as the frontend team grew to nine developers",
+      "Helped ship six microsite templates and prepared the first versioned production release",
+    ],
+    color: "emerald",
+  },
+  {
     company: "TurnDigital Software Company",
     role: "Senior Front-End Developer",
-    period: "May 2025 – Present",
-    duration: "8 months",
+    period: "May 2025 – January 2026",
+    duration: "9 months",
+    summary:
+      "Built maintainable frontend architecture for enterprise projects using the Vue ecosystem.",
     responsibilities: [
       "Specialized in Vue.js, Vuex, Pinia, Tailwind CSS, Umbraco Admin, and Agile methodologies",
       "Responsible for building scalable, maintainable front-end architectures for enterprise projects",
@@ -532,6 +579,8 @@ const timeline = ref([
     role: "Senior Front-End Developer",
     period: "March 2022 – January 2025",
     duration: "2 yrs,10 mos",
+    summary:
+      "Led frontend development, mentored teammates, and delivered Vue and Nuxt interfaces.",
     responsibilities: [
       "Led the front-end development team and trained new trainees",
       "Specialized in Vue.js, Nuxt.js, Vuetify, Vuex, Pinia, BootstrapVue, HTML5, CSS3, Javascript, and Agile",
@@ -545,6 +594,8 @@ const timeline = ref([
     role: "Front-End Developer",
     period: "July 2019 – March 2022",
     duration: "2 yrs 8 mos",
+    summary:
+      "Developed and maintained client interfaces while collaborating with cross-functional teams.",
     responsibilities: [
       "Worked with HTML, CSS, JavaScript, Bootstrap, jQuery, Vue.js, and Jira",
       "Developed dynamic UIs and maintained multiple client projects",
@@ -557,6 +608,8 @@ const timeline = ref([
     role: "Front-End Developer",
     period: "March 2019 – April 2019",
     duration: "2 months",
+    summary:
+      "Turned client requirements into sitemaps, customized interfaces, and WordPress projects.",
     responsibilities: [
       "Conducted meetings with Product Owners, built sitemaps, selected templates",
       "Customized UI and handled WordPress development",
@@ -569,6 +622,8 @@ const timeline = ref([
     role: "Front-End Developer",
     period: "May 2018 – March 2019",
     duration: "10 months",
+    summary:
+      "Supported client websites through template customization and UI improvements.",
     responsibilities: [
       "Responsible for template customization, data entry, WordPress setup",
       "Created sitemaps and implemented UI enhancements",
@@ -623,7 +678,6 @@ const projects = ref([
     tech: "Nuxt.js 2.x, Vue.js, Vuex, Vuetify, Webpack 5, Vee-Validate, XLSX, Chart.js",
     description:
       "Developed a complete inventory management system using Nuxt 2. Implemented full authentication, dynamic dashboards with Chart.js, barcode scanning, Excel import/export system, and multiple business-critical modules including product management and stock operations.",
-    link: "https://fulladmin.quadra-soft.net/",
     color: "violet",
   },
   {
@@ -631,7 +685,6 @@ const projects = ref([
     tech: "Nuxt 3, Vue 3, Vuetify 3, Chart.js 4, NextAuth, i18n v8, ReCAPTCHA v3",
     description:
       "Developed a fully modernized government services platform using Nuxt 3 and Vue 3, leveraging server-side rendering. Implemented secure NextAuth-based authentication, advanced multi-language capabilities with Arabic and English RTL support, dual Gregorian + Hijri calendar support.",
-    link: "https://admin.bayank.sa/",
     color: "rose",
   },
 
@@ -660,37 +713,6 @@ const projects = ref([
     color: "indigo",
   },
 ]);
-
-const downloadCV = async () => {
-  const pdfPath = "/portfolio/files/Senior_FRONTEND_TOQA_HUSSIEN_CV.pdf";
-
-  try {
-    const response = await $fetch.raw(pdfPath, { method: "HEAD" });
-
-    if (response.ok) {
-      const link = document.createElement("a");
-      link.href = pdfPath;
-      link.download = "Senior_FRONTEND_TOQA_HUSSIEN_CV.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      toast.success({
-        title: "Success!",
-        message: "CV Download completed successfully.",
-      });
-    } else {
-      throw new Error(`HTTP ${response.status}: File not accessible`);
-    }
-  } catch (error) {
-    console.error("Download error:", error);
-    toast.error({
-      title: "Error!",
-      message:
-        "Something went wrong. Please check the file path or try again later.",
-    });
-  }
-};
 
 // Form functionality
 

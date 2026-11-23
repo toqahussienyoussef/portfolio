@@ -1,3 +1,5 @@
+import { projects } from "./app/data/projects.js";
+
 export default defineNuxtConfig({
   ssr: false,
 
@@ -9,13 +11,17 @@ export default defineNuxtConfig({
     preset: "github_pages",
     prerender: {
       crawlLinks: true,
-      routes: ["/"],
+      routes: ["/", ...projects.map((project) => `/projects/${project.slug}`)],
     },
   },
 
-  css: ["~/assets/css/main.scss"],
+  css: ["~/assets/css/main.scss", "~/assets/css/projects.scss"],
 
   modules: ["@nuxtjs/tailwindcss", "nuxt-toast"],
+
+  tailwindcss: {
+    cssPath: "~/assets/css/main.scss",
+  },
 
   postcss: {
     plugins: {

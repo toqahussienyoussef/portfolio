@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" fill="none">
+  <title>Illustrative real-estate template overview</title>
+  <desc>A stylized property website layout diagram. This is an illustration, not a live site screenshot.</desc>
+  <rect width="1440" height="1000" fill="#EAEDE5"/>
+  <rect x="72" y="58" width="1296" height="884" rx="24" fill="#fff" stroke="#DDE2D7"/>
+  <path d="M96 58h1248a24 24 0 0 1 24 24v58H72V82a24 24 0 0 1 24-24Z" fill="#18372C"/>
+  <circle cx="112" cy="101" r="8" fill="#E9D985"/>
+  <circle cx="140" cy="101" r="8" fill="#749C75"/>
+  <circle cx="168" cy="101" r="8" fill="#F5F5F5"/>
+  <text x="210" y="108" fill="#fff" font-family="Arial,sans-serif" font-size="18">MICROSITE TEMPLATE · DESIGN OVERVIEW</text>
+  <rect x="1050" y="82" width="280" height="38" rx="19" fill="#E9D985"/>
+  <text x="1190" y="107" fill="#3E452F" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" letter-spacing="2">ILLUSTRATION · NOT A SCREENSHOT</text>
+  <rect x="112" y="176" width="1216" height="95" rx="12" fill="#F5F4EB"/>
+  <rect x="144" y="206" width="160" height="22" rx="11" fill="#749C75" opacity=".8"/>
+  <rect x="790" y="207" width="78" height="18" rx="9" fill="#CFD7CC"/>
+  <rect x="894" y="207" width="78" height="18" rx="9" fill="#CFD7CC"/>
+  <rect x="998" y="207" width="78" height="18" rx="9" fill="#CFD7CC"/>
+  <rect x="1120" y="194" width="168" height="52" rx="10" fill="#19382D"/>
+  <text x="1204" y="227" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="16">Get in touch</text>
+  <rect x="112" y="303" width="1216" height="380" rx="18" fill="#D9E1D2"/>
+  <path d="m112 612 250-193 204 130 224-185 270 194 268-142v267H112V612Z" fill="#B5C5AE"/>
+  <path d="m712 451 152-85 154 85v144H712V451Z" fill="#8EA48C"/>
+  <path d="m682 460 182-103 184 103" stroke="#667F6D" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="790" y="495" width="48" height="100" rx="5" fill="#F4F1E5"/>
+  <rect x="862" y="495" width="48" height="52" rx="5" fill="#F4F1E5"/>
+  <rect x="112" y="303" width="1216" height="380" rx="18" fill="#18372C" opacity=".62"/>
+  <text x="170" y="439" fill="#F8F8F3" font-family="Arial,sans-serif" font-size="46" font-weight="700">A place to feel at home.</text>
+  <text x="172" y="481" fill="#F0F1E9" font-family="Arial,sans-serif" font-size="20">Illustrative homepage, search, and property content layout</text>
+  <rect x="172" y="524" width="714" height="95" rx="15" fill="#fff"/>
+  <rect x="194" y="548" width="482" height="48" rx="8" fill="#F3F5F0" stroke="#DDE2D7"/>
+  <text x="218" y="578" fill="#7D887E" font-family="Arial,sans-serif" font-size="16">City, neighborhood, or ZIP code</text>
+  <rect x="692" y="548" width="170" height="48" rx="8" fill="#D2BC6D"/>
+  <text x="777" y="578" fill="#26392D" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700">Search homes</text>
+  <text x="112" y="742" fill="#19382D" font-family="Arial,sans-serif" font-size="26" font-weight="700">Property discovery, shaped around each brand.</text>
+  <rect x="112" y="778" width="376" height="118" rx="14" fill="#F5F6F2"/>
+  <rect x="512" y="778" width="376" height="118" rx="14" fill="#F5F6F2"/>
+  <rect x="912" y="778" width="416" height="118" rx="14" fill="#F5F6F2"/>
+  <g fill="#749C75">
+    <circle cx="152" cy="829" r="11"/>
+    <circle cx="552" cy="829" r="11"/>
+    <circle cx="952" cy="829" r="11"/>
+  </g>
+  <g fill="#52635A" font-family="Arial,sans-serif" font-size="17">
+    <text x="180" y="835">Home &amp; local content</text>
+    <text x="580" y="835">Property search</text>
+    <text x="980" y="835">Listing detail &amp; inquiry</text>
+  </g>
+  <text x="720" y="918" fill="#66745F" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">ILLUSTRATIVE TEMPLATE MAP · NOT A LIVE WEBSITE SCREENSHOT</text>
+</svg>
