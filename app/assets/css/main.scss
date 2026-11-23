@@ -72,7 +72,11 @@ html {
 
     /* ===== Navigation ===== */
     .main-nav {
-        @apply absolute top-0 left-0 w-full z-50 backdrop-blur-md;
+        @apply sticky top-0 z-50 border-b border-white/10 bg-[#1d2e37]/95 backdrop-blur-md;
+    }
+
+    .hero section[id] {
+        scroll-margin-top: 4rem;
     }
 
     .nav-container {
@@ -121,7 +125,7 @@ html {
 
     /* Overlay */
     .nav-overlay {
-        @apply fixed inset-0 bg-black/50 z-40;
+        @apply fixed inset-0 bg-black/50 z-[60];
     }
 
     /* Side menu */

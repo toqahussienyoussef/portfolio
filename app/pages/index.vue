@@ -130,7 +130,7 @@
                   class="cv-button"
                 >
                   <Download :size="20" />
-                  <span>upload CV</span>
+                  <span>Download CV</span>
                 </a>
               </div>
 
